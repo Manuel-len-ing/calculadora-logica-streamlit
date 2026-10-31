@@ -31,7 +31,7 @@ operadores = ["AND", "OR", "NOT", "XOR", "->", "<->", "(", ")"]
 for i, op in enumerate(operadores):
 	with cols[i % 6]:
 		if st.button(f"{op}", key=f"btn_{op}", use_container_width=True): 
-			if op === "NOT":
+			if op == "NOT":
 				st.session_state.expr += " NOT "
 			elif op in ["(", ")"]: 
 				st.session_state.expr += f"{op}"
