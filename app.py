@@ -18,7 +18,7 @@ st.subheader(" Constructor de Expresión")
 cols = st.columns(6)
 variables = ["A", "B", "C", "D", "E", "F"]
 for i, v in enumerate(variables):
-	with cols[i% 6]:
+	with cols[i % 6]:
 		if st.button(f"{v}", key=f"btn_{v}", use_container_width=True):
 			st.session_state.expr += f" {v} "
 
@@ -32,7 +32,7 @@ for i, op in enumerate(operadores):
 	with cols[i % 6]:
 		if st.button(f"{op}", key=f"btn_{op}", use_container_width=True): 
 			if op === "NOT":
-				st.session_state.expr += "NOT"
+				st.session_state.expr += " NOT "
 			elif op in ["(", ")"]: 
 				st.session_state.expr += f"{op}"
 			else:
@@ -53,7 +53,7 @@ def normalizar_expresion(expr: str) -> str:
 	e = re.sub(r'\bAND\b','and', e)
 	e = re.sub(r'\b0R\b', 'or', e)
 	e = re.sub(r'\bNOT\b','not', e)
-	e = re.sub(r'\bXOR\b',^', e)
+	e = re.sub(r'\bXOR\b','^', e)
 
 	# Implicación y Bicondicional
 	e = re.sub(r'([A-Z])\s*->\s*([A-Z])', r'(not \1 or \2)', e)
