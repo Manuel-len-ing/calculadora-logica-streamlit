@@ -16,11 +16,11 @@ if "expr" not in st.session_state:
 st.subheader(" Constructor de Expresión")
 
 cols = st.columns(6)
-varariables laptas = ["A", "B", "C", "D", "E", "F"]
+variables = ["A", "B", "C", "D", "E", "F"]
 for i, v in enumerate(variables):
 	with cols[i% 6]:
 		if st.button(f"{v}", key=f"btn_{v}", use_container_width=True):
-			st.session_state.expr += f" {v}
+			st.session_state.expr += f" {v} "
 
 st.markdown("---")
 
@@ -30,18 +30,19 @@ cols = st.columns(6)
 operadores = ["AND", "OR", "NOT", "XOR", "->", "<->", "(", ")"]
 for i, op in enumerate(operadores):
 	with cols[i % 6]:
-		if st.button(f"{op}", key=f"btn_{op}", use_container_width=True): if op === "NOT":
-			st.session_state.expr += "NOT"
-		elif op in ["(", ")"]: 
-			st.session_state.expr += f"{op}"
-		else:
-		st.session_state.expr += f" {op} "
+		if st.button(f"{op}", key=f"btn_{op}", use_container_width=True): 
+			if op === "NOT":
+				st.session_state.expr += "NOT"
+			elif op in ["(", ")"]: 
+				st.session_state.expr += f"{op}"
+			else:
+				st.session_state.expr += f" {op}"
 
 col_limpiar, col_preview, col_gen = st.columns([2, 3, 2])
 
 with col_limpiar:
 if st.button(" Limpiar", type="secondary", use_container_width=True):
-	st.session_state.expr :
+	st.session_state.expr = ""
 
 with col_preview:
 	st.code(st.session_state.expr.strip() or "(vacío)", language="text")
